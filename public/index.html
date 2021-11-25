@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>zrbutworse</title>
+<!-- Bootstrap CDN	-->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+</head>
+<body>
+
+	<!-- Bootstrap Title Page -->
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark py-3">
+        <div class="container">
+            <a class="navbar-brand" href="/index.html">
+      <img src="Logo.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+      zr but worse
+    </a>
+						 <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a href="/stats.html" class="nav-link">Stats</a>
+            </li>
+            <li class="nav-item">
+              <a href="/gameModes.html" class="nav-link">GameModes</a>
+            </li>
+            <li class="nav-item">
+              <a href="/settings.html" class="nav-link">Settings</a>
+            </li>
+						 <li class="nav-item">
+              <a href="/credits.html" class="nav-link">Credits</a>
+            </li>
+          </ul>
+
+					<div class="collapse navbar-collapse" id="navmenu">
+						<ul class="navbar-nav ms-auto">
+							<h3 class="text-success">created by lightlord and stop</h3>
+						</ul>
+					</div>
+					
+					<div class="collapse navbar-collapse" id="navmenu">
+			<ul class="navbar-nav ms-auto">
+			<button type="button" class="nav-link btn btn-outline-warning">Register</button>
+			<button type="button" class="nav-link btn btn-outline-warning">Login</button>
+			</ul>
+				</div>
+        </div>
+      </div>
+    </nav>
+        </div>
+    </nav>
+		<section
+ class="bg-dark text-light p-5 text-center text-md-start">
+      <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between">
+          <div>
+            <h1>play a <span class="text-success">trash version</span> of <span class="text-warning">zombsroyale.io</span></h1>
+            <p class="lead my-4">
+            best of the worst zombsroyale.io recreation
+            </p>
+            <button class="btn btn-success btn-lg">Start Playing</button>
+          </div>
+          <img class="img-fluid w-50 d-none d-sm-block" src="img/fish.svg" alt="" />
+        </div>
+      </div>
+    </section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js" integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script>
+		function setup() {
+  createCanvas(window.innerWidth, window.innerHeight);
+}
+
+function draw() {
+  //zombs royale but remastered cause im not that good enough lmao
+
+
+//on website too
+//https://replit.com/@LightDarkHole/zrbutworsee
+
+textSize(20);
+textFont("trebuchet ms");
+
+
+//Player info declaration
+const playerInfo = {
+	"isAlive": null,
+	"isDead": null,
+	"guest": null,
+	"loggedIn": null,
+	"ping": null,
+	"fps": null,
+	"kills": null,
+	"xpGainedInGame": null,
+	"xp": null,
+	"mouseAngle": null,
+	"name": null,
+	"x": null,
+	"y": null,
+	"health": null,
+	"fov": {
+		"obstacles": null,
+		"bullets": null,
+		"players": null
+	},
+	"gameInfo": {
+		"mapSize": {
+			"x": null,
+			"y": null
+		}
+	}
+}
+
+var keys = [];
+keyPressed = function() {
+    keys[keyCode] = true;
+};
+keyReleased = function() {
+    keys[keyCode] = false;
+};
+var trees = [];
+
+
+function tree(x, y,s) {
+    //in object for collisiosss
+    this.x = x;
+
+    this.y = y;
+
+    this.w = 70;
+    this.h = 70;
+
+    this.draw = function() {
+        ///inner collisionsss
+        noStroke();
+        noFill();
+        ellipse(this.x,this.y,this.w,this.h);
+        //draw actual {
+        push();
+        scale(s*0.4);
+        translate(-130+this.x,30+this.y);
+
+        //{
+        push();
+        translate(this.x, this.y);
+        strokeWeight(6);
+        fill(70, 130, 57);
+        scale(1, 0.9);
+        noStroke();
+        rect(145, 69, 115, 128);
+        triangle(150, 80, 125, 154, 146, 180);
+        stroke(0, 0, 0);
+
+        bezier(225, 70, 207, 53, 198, 2, 160, 72);
+
+
+        bezier(225, 71, 229, 67, 305, 44, 259, 114);
+
+        bezier(255, 182, 300, 163, 303, 158, 259, 114);
+
+        bezier(255, 182, 257, 206, 265, 244, 201, 199);
+
+        bezier(150, 190, 154, 234, 168, 234, 201, 199);
+
+
+        bezier(150, 190, 105, 172, 109, 176, 132, 135);
+
+        bezier(156, 73, 119, 83, 92, 99, 132, 135);
+
+        pop();
+
+        //}//[dark] green base
+        //{
+        push();
+        translate(this.x + 118, this.y + 62);
+        strokeWeight(10);
+        fill(156, 196, 147);
+        scale(0.4, 0.4);
+        noStroke();
+        rect(144.5, 70, 115, 128);
+        triangle(150, 80, 125, 154, 146, 180);
+
+        stroke(156, 196, 147);
+        bezier(225, 70, 207, 53, 198, 2, 160, 72);
+
+
+        bezier(225, 71, 229, 67, 305, 44, 259, 114);
+
+        bezier(255, 182, 300, 163, 303, 158, 259, 114);
+
+        bezier(255, 182, 257, 206, 265, 244, 201, 199);
+
+        bezier(150, 190, 154, 234, 168, 234, 201, 199);
+
+
+        bezier(150, 190, 105, 172, 109, 176, 132, 135);
+
+        bezier(156, 73, 119, 83, 92, 99, 132, 135);
+
+        pop();
+        //}inner green [light] 
+
+        pop();
+        
+        //}
+    };
+
+
+}
+
+//var t = new tree(130, 300,1);
+
+trees.push(new tree(130,300,1));
+
+trees.push(new tree(130,500,1));
+function collisioncheck(a, b) {
+    return a.x + a.w > b.x &&
+           a.x - b.w < b.x &&
+           a.y + a.h > b.y &&
+           a.y - b.h < b.y;
+}
+
+
+var crates = [];
+
+function player (x,y) {
+    
+    this.x = x;
+    this.y = y;
+    this.w = 30;
+    
+    this.h = 30;
+    
+    this.angle = 0;
+    this.xVel = 0;
+    this.yVel = 0;
+    //punch help from arena.io ls
+    this.leftPunch = 0;
+    this.rightPunch = 0;
+    
+
+    this.punchTimer = 0;
+    this.punchHand = "left";
+    this.draw = function() {
+        stroke(0, 0, 0);
+        fill(236, 237, 165);
+        strokeWeight(2);
+ 
+        push();
+        push();
+        
+               translate(this.x,this.y);
+        rotate(this.angle);
+        ellipse(-10,+13+this.rightPunch,this.w/3,this.h/3);
+        ellipse(10,+13+this.leftPunch,this.w/3,this.h/3);
+        ellipse(0,0,this.w,this.h);
+        pop();
+        pop();
+        
+        if (mouseIsPressed) {
+              /*if (this.punchTimer === 0) {
+                  this.leftPunch = 0;
+                  this.rightPunch = 0;
+                  
+                  this.punchTimer += 5;
+              }*/
+              this.punchTimer += 5;
+              if (this.punchHand === "left" && this.punchTimer >= 80) {
+                this.rightPunch = 0;
+                this.leftPunch = 2.2;
+                this.punchHand = "right";
+                this.punchTimer = 0;
+              } else if (this.punchHand === "right" && this.punchTimer >= 80) {
+                this.leftPunch = 0;
+                this.rightPunch = 2.2;
+                this.punchHand = "left";
+                
+                
+                this.punchTimer = 0;
+              }
+            } else {
+              this.leftPunch = 0;
+              this.rightPunch = 0;
+            }
+
+    
+        
+    };
+    
+    this.mech = function () {
+        
+        this.angle = atan2(mouseY - 800/2, mouseX - 1450/2) - 180 / 2;
+        if(keys[87]) {
+            this.yVel = -3;
+        }else if(keys[83]) {
+            this.yVel = +3;
+        }else {
+            this.yVel = 0;
+        }
+        
+        if(keys[68]) {
+            this.xVel = +3;
+        }else if(keys[65]) {
+            this.xVel = -3;
+        }else {
+            this.xVel =0;
+        }
+        
+ 
+    };
+        
+        // for(var i = 0; i < ts.length; i += 1){// When you are ready to add multiple trees, uncomment this line (and it's closing `}`) and change all of the `t` to `ts[i]` (or whatever the trees array is named.)
+
+        
+
+
+        this.collisions = function () {
+
+          for(var i = 0;i < trees.length; i++){
+            var t = trees[i];
+          
+            if(dist(t.x, t.y, this.x, this.y) < t.w/2 + this.w/2){// There's a t here.
+                var xDif = this.x - t.x;// There's a t here
+                var yDif = this.y - t.y;// There's a t here
+                var angleBetween = atan2(yDif, xDif);
+                
+                var sizeDif = (this.w + t.w) / 2;// There's a t here
+                var force = sizeDif - sqrt(xDif*xDif + yDif*yDif);
+                
+                
+                this.x += cos(angleBetween) * force * 1.5;
+                this.y += sin(angleBetween) * force * 1.5;
+            }
+          }
+        
+        // }
+        
+        
+         if (this.xVel !== 0) {
+            this.x += this.xVel;
+            for (var i = 0; i < crates.length; i++) {
+                if (collisioncheck(this, crates[i])) {
+                    if (this.xVel < 0) {
+                        this.x = crates[i].x + crates[i].w;
+                        this.xVel = 0;
+                    }
+                    if (this.xVel > 0) {
+                        this.x = crates[i].x - this.w;
+                        this.xVel = 0;
+                    }
+
+                }
+            }
+        }
+        if (this.yVel !== 0) {
+            this.y += this.yVel;
+            for (var i = 0; i < crates.length; i += 1) {
+                if (collisioncheck(this, crates[i])) {
+                    if (this.yVel < 0) {
+                        this.y = crates[i].y + crates[i].h;
+                        this.yVel = 0;
+                    }
+                    if (this.yVel > 0) {
+                        this.y = crates[i].y - this.h;
+                        this.yVel = 0;
+                    }
+                }
+            }
+        }
+            for(var i = 0; i<crates.length; i++){
+                if(collisioncheck(this,crates[i]) ) {
+                    if(keys[69]) {
+                        
+                    }
+                    
+                    
+                    
+                }
+            }
+        };
+
+  
+}
+
+
+
+
+
+
+
+
+
+
+var crates = [];
+function crate(x,y, s) {
+    
+    this.x = x;
+    this.y = y;
+    
+    this.w = 30;
+    this.h=30;
+    
+    this.draw= function() {
+        push();
+        
+        rectMode(CENTER);
+        scale(s);
+        strokeWeight(3);
+        stroke(0, 0, 0);
+        fill(186, 112, 43);
+        rect(this.x,this.y,this.w,this.h,4);
+        strokeWeight(0.1);
+        fill(171, 103, 44);
+
+        noStroke();
+        fill(133, 68, 15);
+        rect(this.x+1,this.y+1,this.w/1.5,this.h/1.5);
+        
+        stroke(186, 112, 43);
+        strokeWeight(3);
+        triangle(this.x+13,this.y+13,this.x+13,this.y-12,this.x-11,this.y-12);
+        rectMode(CORNER);
+
+        pop();
+    };
+    
+    
+}
+
+
+
+for(var i = 0; i < 20; i++){
+crates.push(new crate(random(-1000,1000),random(-1000,1000),1));
+}
+
+function gamebkg () {
+    strokeWeight(3);
+    for (var i = 0;i<3001;i+=30){
+        strokeWeight(1.6);
+        stroke(94, 125, 62);
+        line(i, 0, i, 3000);
+        line(0, i, 3000, i);
+    }
+}
+
+
+var trigger = ["false","false","false","false","false","false"];
+function gunSlot (which) {
+  if(trigger[0] === false || trigger[1] === false || trigger[2] === false|| trigger[3] === false){
+    strokeWeight(1);
+
+  }
+  switch(which){
+    
+    case "1":
+      noFill();
+
+      stroke(200,200,200);
+
+      if(keyPressed&& keyCode === 70){
+        trigger[0] = true;
+        trigger[1] = false;
+        trigger[2]=false;
+        trigger[3]=false;
+
+
+      }
+      if(keyReleased && keyCode === 70){
+        trigger[0] = true;
+        trigger[1] = false;
+        trigger[2]=false;
+        trigger[3]=false;
+      }
+
+      if(trigger[0]){
+        strokeWeight(2);
+        trigger[1]=false;
+        trigger[2]=false;
+        trigger[3]=false;
+      }else if(!trigger[0] && trigger[1]===true || !trigger[0] && trigger[2]===true||!trigger[0]&& trigger[3]===true ){
+        strokeWeight(1);
+      }
+      rect(980,680,50,50,5)
+      textAlign(CENTER);
+
+      text("f",980-76,680+60,200,200);
+    break;
+
+    case "2":
+        noFill();
+
+      stroke(200,200,200);
+
+      if(keyPressed&& keyCode === 16){
+        trigger[1] = true;
+        trigger[0]=false;
+        trigger[2]=false;
+        trigger[3]=false;
+
+
+      }
+      if(keyReleased && keyCode === 16){
+        trigger[1] = true;
+        trigger[0]=false;
+        trigger[2]=false;
+        trigger[3]=false;
+      }
+
+      if(trigger[1]){
+        strokeWeight(2);
+        trigger[0]=false;
+        trigger[2]=false;
+        trigger[3]=false;
+        
+      }else if(!trigger[1] && trigger[0]===true || !trigger[1] && trigger[2]===true||!trigger[0]&& trigger[3]===true ){
+        strokeWeight(1);
+      }
+      rect(1040,680,50,50,5)
+      textAlign(CENTER);
+
+      text("shift",1040-76,680+60,200,200);
+      break;
+
+    case "3":
+      noFill();
+
+      stroke(200,200,200);
+
+      if(keyPressed&& keyCode === 32){
+        trigger[2] = true;
+        trigger[0]=false;
+        trigger[1]=false;
+
+
+      }
+      if(keyReleased && keyCode === 32){
+        trigger[2] = true;
+        trigger[0]=false;
+        trigger[1]=false;
+      }
+
+      if(trigger[2]){
+        strokeWeight(2);
+        trigger[0]=false;
+        trigger[1]=false;
+        
+      }else if(!trigger[2] && trigger[0]===true || !trigger[2] && trigger[1]===true ||!trigger[0]&& trigger[3]===true){
+        strokeWeight(1);
+      }
+      
+      rect(1100,680,50,50,5)
+      textAlign(CENTER);
+
+      text("space",1100-76,680+60,200,200);
+      break;
+      case "4":
+
+      //
+       noFill();
+
+      stroke(200,200,200);
+
+      if(keyPressed&& keyCode === 81){
+        trigger[3] = true;
+        trigger[0]=false;
+        trigger[1]=false;
+        trigger[2] = false;
+
+
+      }
+      if(keyReleased && keyCode === 81){
+        trigger[3] = true;
+        trigger[0]=false;
+        trigger[1]=false;
+        trigger[2] = false;
+      }
+
+      if(trigger[3]){
+        strokeWeight(2);
+        trigger[0]=false;
+        trigger[1]=false;
+        trigger[2]=false;
+        
+      }else if(!trigger[3] && trigger[0]===true || !trigger[3] && trigger[1]===true || !trigger[3]&& trigger[2] === true){
+        strokeWeight(1);
+      }
+      
+      rect(1160,680,50,50,5)
+      textAlign(CENTER);
+
+      text("q",1160-76,680+60,200,200);
+      break;
+
+  }
+
+
+
+
+
+
+
+}
+
+
+var p = new player(0,0);
+draw = function() {
+
+
+    background(106, 140, 69);
+    gamebkg();
+    push();
+    translate(60,0);
+    gunSlot("1");
+    gunSlot("2");
+    gunSlot("3");
+    gunSlot("4");
+    pop();
+
+
+    translate(round(1450 / 2 - p.x), round(800 / 2 - p.y));
+
+    for(var i = 0; i <trees.length; i++){
+      trees[i].draw();
+    }
+    
+    
+    for(var i = 0;i<crates.length; i++) {
+        crates[i].draw();
+    }
+        p.draw();
+            p.collisions();
+
+    p.mech();
+};
+
+
+
+
+}
+	</script>
+	<script src="index.js"></script>
+</body>
+</html>
