@@ -2,4 +2,4 @@
 Zombsroyale remake...
 
 # Developers
-Stop, LightLord
+Stop and LightLord
