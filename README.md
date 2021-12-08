@@ -1,4 +1,4 @@
-# zrbutworse
+# zrbutworse(deprecated)
 Zombsroyale remake...
 
 # Developers
